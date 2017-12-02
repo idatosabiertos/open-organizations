@@ -4,7 +4,16 @@ const app = express()
 const routes = require('./app/routes/index');
 
 //app.use('/', routes);
+
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
+
 app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     console.log(req.url, req.method);
     next();
 });

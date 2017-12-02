@@ -3,7 +3,7 @@ const connection = {
     port: 3306,
     user: 'root',
     password: 'root',
-    database: `ilda.organizations`
+    database: `open-organizations`
 }
 
 function getConnection (organization) {

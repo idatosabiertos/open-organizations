@@ -1,0 +1,7 @@
+<input [(ngModel)]="country" type="text">
+<button (click)="searchOrganizations()">Buscar</button>
+
+
+  Listado de organizaciones
+  <div *ngFor="let organization of organizations">{{organization.fields.code_es}}</div>
+

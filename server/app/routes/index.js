@@ -9,12 +9,12 @@ routes.get('/data', (req, res) => {
     res.status(200).json(importData.get());
 });
 
-/*
+
 routes.get('/data/:country', (req, res) => {
     res.status(200).json(importData.getByCountry(req.params.country));
-});*/
+});
 
-routes.get('/data/import', (req, res) => {
+routes.get('/data/import/do', (req, res) => {
     res.status(200).json(importData.insertData());
 });
 

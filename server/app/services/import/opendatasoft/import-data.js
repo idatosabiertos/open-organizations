@@ -15,11 +15,11 @@ function insertData () {
     var data = getData();
 
     for (let item of data) {
-        console.log(item);
+        //console.log(item);
         var organization = {
             name: item.fields.name,
-            latitude: item.fields.latitude,
-            longitude: item.fields.longitude,
+            latitude: item.geometry ? item.geometry.coordinates[0] : null,
+            longitude:  item.geometry ? item.geometry.coordinates[1] : null,
             country: item.fields.country_slug
         };
         organizationsDAO.add(organization);
