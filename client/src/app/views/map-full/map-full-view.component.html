@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="main-inner">
+    <div class="content">
+      <div class="mt-80">
+        <agm-map [latitude]="lat" [longitude]="lng" style="height: 1000px; width: 1000px" [styles]="customStyle">
+          <agm-marker *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng" [iconUrl]="m.icon"></agm-marker>
+        </agm-map>
+      </div>
+
+      <input [(ngModel)]="country" type="text">
+      <button (click)="searchOrganizations()">Buscar</button>
+      Listado de organizaciones
+      <div *ngFor="let organization of organizations">{{organization.fields.code_es}}</div>
+      MAPA
+
+
+    </div><!-- /.content -->
+  </div><!-- /.main-inner -->
+</div><!-- /.main -->
+
+
+
