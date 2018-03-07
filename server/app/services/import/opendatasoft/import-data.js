@@ -11,7 +11,11 @@ function getByCountry (country) {
     })
 }
 
-function insertData () {
+function getDataAll () {
+    return organizationsDAO.get();
+}
+
+function insertData (callback) {
     var data = getData();
 
     for (let item of data) {
@@ -22,10 +26,13 @@ function insertData () {
             longitude:  item.geometry ? item.geometry.coordinates[1] : null,
             country: item.fields.country_slug
         };
-        organizationsDAO.add(organization);
+        organizationsDAO.add(organization, function () {});
     }
+
+    callback(null, true, null);
 }
 
 exports.get = getData;
+exports.getData = getDataAll;
 exports.getByCountry = getByCountry;
 exports.insertData = insertData;

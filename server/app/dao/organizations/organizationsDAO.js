@@ -1,17 +1,14 @@
 const config = require("../../config");
-const mysql = require('nodejs-mysql').default;
-const db = mysql.getInstance(config.getConnection());
+var mysql = require('mysql');
+var pool = mysql.createPool(config.getConnection());
 
-function add (organization) {
-    db.exec('insert into organizations set ?', {
-        name: organization.name,
-        latitude: organization.latitude,
-        longitude: organization.longitude,
-        country: organization.country
-    }).then(rows => {
-    }).catch(e => {
-        console.log("ERROR MYSQL",organization.name);
-    });
+function add(organization, callback) {
+    pool.query('INSERT into organizations SET ?', organization, callback);
 }
 
-exports.add = add
+function get(country, callback) {
+    pool.query('select * from `organizations` where `country` = ?', [country], callback);
+}
+
+exports.add = add;
+exports.get = get;
