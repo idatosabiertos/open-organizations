@@ -4,11 +4,11 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {GridViewerComponent} from './grid-viewer/grid-viewer.component';
 import {RouterModule, Routes} from "@angular/router";
-import {CommonModule} from "@angular/common";
 import {SearchService} from "./common/services/search.service";
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
 import {AgmCoreModule} from '@agm/core';
+import {CommonModule} from "./common/common.module";
 
 export const ROUTES: Routes = [
   { path: '', component: GridViewerComponent }
@@ -17,7 +17,7 @@ export const ROUTES: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    GridViewerComponent
+    GridViewerComponent,
   ],
   imports: [
     BrowserModule,
