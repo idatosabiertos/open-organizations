@@ -1,11 +1,28 @@
-<input [(ngModel)]="country" type="text">
-<button (click)="searchOrganizations()">Buscar</button>
+<div style="display: flex">
+  <div style="flex-basis: 30%">
+    <div style="margin: 5px">
+
+      <input style="    width: 100%;" [(ngModel)]="country" type="text">
+      <button style="background: #1e73be;
+    border: 0px;
+    padding: 3px;
+    height: 40px;
+    width: 100%;
+    color: white;
+    border-radius: 0px;" (click)="searchOrganizations()">Buscar
+      </button>
 
 
-Listado de organizaciones
-<div *ngFor="let organization of organizations">{{organization.fields.code_es}}</div>
+      Listado de organizaciones
+      <div *ngFor="let organization of organizations" style="color: black;">{{organization.fields.code_es}}</div>
 
-MAPA
-<agm-map [latitude]="lat" [longitude]="lng" style="height: 1000px; width: 1000px" [styles]="customStyle">
-  <agm-marker *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng" [iconUrl]="m.icon"></agm-marker>
-</agm-map>
+    </div>
+  </div>
+
+  <div style="flex-basis: 70%">
+    <agm-map [latitude]="lat" [longitude]="lng" style="height: 500px; width: 100%" [styles]="customStyle">
+      <agm-marker *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng" [iconUrl]="m.icon"></agm-marker>
+    </agm-map>
+  </div>
+
+</div>
