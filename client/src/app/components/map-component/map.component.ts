@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {SearchService} from "../../common/services/search.service";
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'map-full-view',
-  templateUrl: './map-full-view.component.html'
+  selector: 'map-component',
+  templateUrl: './map.component.html'
 })
-export class MapFullViewComponent implements OnInit {
-
-  country: string;
-  organizations: any = [];
-
+export class MapComponent implements OnInit {
+  @Input()
+  latitude: number;
+  @Input()
+  longitude: number;
+  @Input()
   markers: any = [];
   public customStyle = [
     {
@@ -245,38 +245,9 @@ export class MapFullViewComponent implements OnInit {
     }
   ];
 
-  constructor(private searchService: SearchService) {
-  }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  searchOrganizations() {
-
-    this.searchService.search(this.country).subscribe(
-      data => {
-        this.organizations = data;
-        this.markers = data.map(function (m) {
-          console.log(m);
-          let marker: any = {}
-          marker.lat = m.geometry.coordinates[1];
-          marker.lng = m.geometry.coordinates[0];
-          marker.label = m.fields.code_es;
-          marker.draggable = true;
-          marker.icon = {
-            url: 'https://i.pinimg.com/originals/e6/4e/55/e64e5504551b43a35eef9b3a17056804.png', // gives a data://<value>
-            scaledSize: {
-              height: 40,
-              width: 40
-            }
-          };
-
-          return marker;
-        });
-        console.log(this.markers);
-      }
-    );
-
-
-  }
 }
