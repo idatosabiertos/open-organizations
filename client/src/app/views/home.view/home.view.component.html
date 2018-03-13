@@ -1,0 +1,42 @@
+<div style="display: flex" >
+  <div style="flex-basis: 30%" >
+    <div style="margin: 15px">
+
+
+
+
+
+
+      <mat-card>
+        Búsqueda de organizaciones
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Países" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onCountrySelected($event)">
+            <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+              <img style="vertical-align:middle;" aria-hidden src="/assets/flags/{{state.flag}}" height="25" />
+              <span>{{ state.name }}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="searchOrganizations()">Buscar</button>
+
+        Listado de organizaciones
+
+        <div *ngFor="let organization of organizations">{{organization.fields.code_es}}</div>
+      </mat-card>
+
+
+
+    </div>
+  </div>
+
+  <div style="flex-basis: 70%">
+    <mat-card style="margin: 15px">
+    <map-component [latitude]="latitude" [longitude]="longitude" [markers]="markers"></map-component>
+    </mat-card>
+  </div>
+
+</div>
+
