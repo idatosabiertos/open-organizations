@@ -1,6 +1,7 @@
 const routes = require('express').Router();
 const importData = require('../services/import/opendatasoft/import-data');
 const organizationsService = require('../services/organizations/organizations.service');
+const countriesService = require('../services/country/countries.service');
 
 function callBackHandleReponse(res){
     return function (error, results, fields) {
@@ -32,7 +33,11 @@ routes.get('/data/import/data', (req, res) => {
 });
 
 routes.get('/organizations/:country', (req, res) => {
-    organizationsService.getOrganizationsByCountry(req.params.country, callBackHandleReponse(res));
+    organizationsService:getOrganizationsByCountry(req.params.country, callBackHandleReponse(res));
+});
+
+routes.get('/countries', (req, res) => {
+    countriesService.getCountries(true, callBackHandleReponse(res))
 });
 
 
