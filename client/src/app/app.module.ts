@@ -2,32 +2,29 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {GridViewerComponent} from './grid-viewer/grid-viewer.component';
 import {RouterModule, Routes} from "@angular/router";
 import {SearchService} from "./common/services/search.service";
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
-import {AgmCoreModule} from '@agm/core';
-import {CommonModule} from "./common/common.module";
+import {HomeViewComponent} from "./views/home.view/home.view.component";
+import {ViewsModule} from "./views/views.module";
+import {AgmCoreModule} from "@agm/core";
+import {ComponentsModule} from "./common/components/components.module";
 
 export const ROUTES: Routes = [
-  { path: '', component: GridViewerComponent }
+  { path: '', component: HomeViewComponent }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent,
-    GridViewerComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
-    CommonModule,
+    ViewsModule,
     HttpModule,
-    FormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBet7D7molKMR5viJVhFc0Obcc_nyVqGQo'
-    })
+    FormsModule
   ],
   providers: [SearchService],
   bootstrap: [AppComponent]
