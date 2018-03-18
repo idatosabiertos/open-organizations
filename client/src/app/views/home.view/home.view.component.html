@@ -22,7 +22,9 @@
 
         <button mat-raised-button color="primary" (click)="searchOrganizations()">Buscar</button>
 
+        <div>
         Listado de organizaciones
+        </div>
 
         <div *ngFor="let organization of organizations">{{organization.fields.code_es}}</div>
       </mat-card>
@@ -38,5 +40,10 @@
     </mat-card>
   </div>
 
+
+
 </div>
 
+<div style="margin: 15px" class="mat-elevation-z5">
+<region-component *ngIf="countries && countries.length > 0" [countries]="countries"></region-component>
+</div>

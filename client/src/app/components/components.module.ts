@@ -2,19 +2,25 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {CommonModule} from "../common/common.module";
 import {MapComponent} from './map-component/map.component';
+import {RegionComponent} from "./region-component/region.component";
+import {AgmCoreModule} from "@agm/core";
 
 
 @NgModule({
   declarations: [
-    MapComponent
+    MapComponent,
+    RegionComponent
   ],
 
   imports: [
     BrowserModule,
     CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBet7D7molKMR5viJVhFc0Obcc_nyVqGQo'
+    })
   ],
   exports: [
-    MapComponent
+    MapComponent, RegionComponent
   ],
   schemas: []
 })
