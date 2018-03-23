@@ -1,6 +1,5 @@
-const config = require("../../config");
-var mysql = require('mysql');
-var pool = mysql.createPool(config.getConnection());
+const db = require("../database");
+var pool = db.getPool();
 
 function add(organization, callback) {
     pool.query('INSERT into organizations SET ?', organization, callback);

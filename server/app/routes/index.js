@@ -5,15 +5,16 @@ const countriesService = require('../services/country/countries.service');
 
 function callBackHandleReponse(res){
     return function (error, results, fields) {
-        if (error) res.json(error);
+        if (error){
+            console.log("ERROR###################", error);
+            res.json(error)
+        };
         res.json(results);
     };
 }
 
 
-routes.get('/', (req, res) => {
-    res.status(200).json({message: 'Connected!'});
-});
+
 
 routes.get('/data', (req, res) => {
     res.status(200).json(importData.get());
