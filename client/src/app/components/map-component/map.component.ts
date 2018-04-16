@@ -250,4 +250,7 @@ export class MapComponent implements OnInit {
   ngOnInit() {
   }
 
+  clickedMarker(i, m): void {
+    console.log("click", i, m);
+  }
 }

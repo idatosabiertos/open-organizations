@@ -9,7 +9,7 @@ export class SearchService {
 
   search(country: string){
 
-    return  this.http.get('http://localhost:3000/data/' + country)
+    return  this.http.get('/data/' + country)
       .map(data => {
         return data.json();
       });

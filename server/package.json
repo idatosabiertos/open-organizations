@@ -4,12 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build --prefix ../client && gulp copy-ui",
+    "start": "npm run build && node index.js "
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
     "mysql": "^2.15.0"
+  },
+  "devDependencies": {
+    "gulp-cli": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-run": "^1.7.1"
   }
 }

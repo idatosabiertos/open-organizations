@@ -9,7 +9,7 @@ export class CountryService {
 
   getCountries(){
 
-    return  this.http.get('http://localhost:3000/countries')
+    return  this.http.get('/countries')
       .map(data => {
         return data.json();
       });

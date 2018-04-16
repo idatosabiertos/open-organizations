@@ -87,6 +87,10 @@ export class HomeViewComponent implements OnInit {
               width: 40
             }
           };
+          marker.title = m.fields.name;
+          marker.country = m.fields.country;
+          marker.url = m.fields.url;
+          marker.organization = m.fields.organisation;
           return marker;
         });
 
